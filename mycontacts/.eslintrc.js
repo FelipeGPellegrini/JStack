@@ -15,5 +15,6 @@ module.exports = {
     'consistent-return': 'off',
     camelcase: 'off',
     'max-len': 'off',
+
   },
 };
