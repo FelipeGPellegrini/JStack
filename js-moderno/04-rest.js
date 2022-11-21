@@ -1,13 +1,15 @@
 const user = {
     firstName: 'Felipe',
     lastName: 'Pellegrini',
+    full_name: 'Nome Completo',
     age: 17,
     instagram: '@eu_flp',
     skills: ['Front-end', 'Photoshop']
 }
 
-//Destructuring
-const { firstName, age: idade, skills } = user;
-const [primary, secondary] = skills
+//Rest operator
 
-console.log(idade)
+const { firstName, skills, ...restoUser } = user;
+const [primary, ...restoSkills] = skills
+
+console.log(restoUser)
