@@ -19,7 +19,35 @@ const some = array.some((product) => product.price < 1000);
 
 const every = array.every((product) => product.price >= 1000);
 
-console.log({ every })
+// console.log({ every })
+
+// .map
+
+const map = array.map((product) => {
+    return {
+        ...product,
+        subtotal: product.quantity * product.price
+        }
+});
+// console.log({map})
+
+
+// . filter 
+const filter = array.filter((product) => {
+    return product.quantity > 1
+})
+
+//console.log({filter})
+
+// .reduce
+
+const reduce = array.reduce((accumulator, product) => {
+    console.log(product)
+    return accumulator + (product.price * product.quantity)
+    
+}, 0)
+
+console.log({ reduce })
 
 
 
