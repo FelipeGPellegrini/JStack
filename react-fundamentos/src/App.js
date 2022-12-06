@@ -1,38 +1,64 @@
-import React, { Fragment } from 'react'
+import React, { useState } from 'react'
+
 import Post from './Post'
+import Header from './Header'
 
 
 // Props -> Propriedades
 function App () {
+  const [posts, setPosts] = useState([
+    {id: Math.random(), title: "Title#01", subtitle: "Sub#01", likes: 20},
+    {id: Math.random(), title: "Title#02", subtitle: "Sub#02", likes: 10},
+    {id: Math.random(), title: "Title#03", subtitle: "Sub#03", likes: 50},
+    {id: Math.random(), title: "Title#04", subtitle: "Sub#04", likes: 50}
+  ])
+
+  function handleRefresh() {
+
+  
+      
+      setPosts((prevStates) => [
+        ...prevStates,
+        {
+          id: Math.random(), 
+          title: `Title#0${prevStates.length + 1}`, 
+          subtitle: `Sub#0${prevStates.length + 1}`, 
+          likes: 50
+       } ]);
+
+  }
+
+  function handleRemovePost(postId) {
+    setPosts((prevStates) => (
+      prevStates.filter(post => post.id !== postId)
+    ))
+  }
+
   return (
-    <Fragment>
-      <h1>JStack's Blog</h1>
-      <h2>Posts da semana</h2>
+    <>
+      
+    <Header>
+      <h2>Posts da semana
+        <button onClick={handleRefresh}>Atualizar</button>
+      </h2>
+    </Header>
 
       <hr />
 
-      <Post post={{
-        title:"Titulo da notícia 01",
-        subtitle:"Subtítulo da notícia 01"
-      }}
-      
-      />
+      {posts.map(post => (
+        <Post
+          key={post.id}
+          likes= {post.likes}
+          onRemove={handleRemovePost}
+          post={{
+          id: post.id,
+          title: post.title,
+          subtitle: post.subtitle
+        }} 
+        />
+      ))}
 
-      <Post post={{
-        title:"Titulo da notícia 02",
-        subtitle:"Subtítulo da notícia 02"
-      }}
-      
-      />
-
-      <Post post={{
-        title:"Titulo da notícia 03",
-        subtitle:"Subtítulo da notícia 03"
-      }}
-      
-      />
-
-    </Fragment>
+    </>
   )
 };
 
