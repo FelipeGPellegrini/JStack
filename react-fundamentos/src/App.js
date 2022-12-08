@@ -4,6 +4,8 @@ import Post from './Post'
 import Header from './Header'
 import { ThemeProvider } from './ThemeContext'
 
+import styles from './App.scss'
+
 
 // Props -> Propriedades
 function App () {
@@ -42,7 +44,7 @@ function App () {
     <ThemeProvider>
       
     <Header>
-      <h2>Posts da semana
+      <h2 className={styles.title}>Posts da semana
         <button onClick={handleRefresh}>Atualizar</button>
       </h2>
     </Header>
