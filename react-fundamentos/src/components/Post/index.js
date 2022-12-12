@@ -1,8 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import PostHeader from './PostHeader'
 
 import styles from './Post.scss'
+
+import { Subtitle, Rate } from './styles'
 
 export default function Post(props){
 
@@ -22,9 +25,9 @@ export default function Post(props){
                 }}
             />
             <br/>
-            <small>{props.post.subtitle}</small>
+            <Subtitle>{props.post.subtitle}</Subtitle>
             <br />
-            Media: {props.post.likes / 2}
+            <Rate>Media: {props.post.likes / 2}</Rate>
         </article>
         
         
