@@ -3,19 +3,13 @@ import PropTypes from 'prop-types'
 
 import PostHeader from './PostHeader'
 
-import styles from './Post.scss'
-
-import { Subtitle, Rate } from './styles'
+import { Container, Subtitle, Rate } from './styles'
 
 export default function Post(props){
 
     return (
     <>
-        <article className={props.post.removed 
-            ? styles.postDeleted 
-            : styles.post
-            }
-            >
+        <Container removed={props.post.removed}>
             <PostHeader
                 onRemove={props.onRemove}
                 post={{
@@ -26,9 +20,8 @@ export default function Post(props){
             />
             <br/>
             <Subtitle>{props.post.subtitle}</Subtitle>
-            <br />
             <Rate>Media: {props.post.likes / 2}</Rate>
-        </article>
+        </Container>
         
         
     </>
