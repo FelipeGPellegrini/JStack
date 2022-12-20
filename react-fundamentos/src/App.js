@@ -12,33 +12,28 @@ import Layout from "./components/Layout";
 
 import themes from "./styles/themes/index";
 
-function App() {
-  const [theme, setTheme] = useState("dark");
-  const firstRender = useRef(true);
+class App extends React.Component {
+  state = {
+    theme: "dark",
+  };
 
-  const currentTheme = useMemo(() => {
-    return themes[theme] || themes.dark;
-  }, [theme]);
+  handleToggleTheme = () => {
+    this.setState((prevState) => ({
+      theme: prevState.theme === "dark" ? "light" : "dark",
+    }));
+  };
 
-  function handleToggleTheme() {
-    setTheme((prevStates) => (prevStates == "dark" ? "light" : "dark"));
+  render() {
+    const { theme } = this.state;
+
+    return (
+      <ThemeProvider theme={themes[theme] || themes.dark}>
+        <GlobalStyle />
+
+        <Layout onToggleTheme={this.handleToggleTheme} selectedTheme={theme} />
+      </ThemeProvider>
+    );
   }
-
-  useEffect(() => {
-    if (firstRender.current) {
-      firstRender.current = false;
-      return;
-    }
-    console.debug({ theme });
-  }, [theme]);
-
-  return (
-    <ThemeProvider theme={currentTheme}>
-      <GlobalStyle />
-
-      <Layout onToggleTheme={handleToggleTheme} selectedTheme={theme} />
-    </ThemeProvider>
-  );
 }
 
 export default App;
