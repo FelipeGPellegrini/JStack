@@ -10,7 +10,7 @@ export default class Header extends React.Component {
       <ThemeContext.Consumer>
         {(value) => (
           <Container>
-            <h1>JStack's Blog</h1>
+            <h1>JStack's Blog!</h1>
             <button type="button" onClick={value.handleToggleTheme}>
               {value.theme == "dark" ? "🌞" : "🌑"}
             </button>
