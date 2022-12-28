@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
-import { Link, BrowserRouter, useHistory } from "react-router-dom";
+import { Link, BrowserRouter } from "react-router-dom";
 
 import Header from "../Header";
-import Footer from "../Footer";
 import Routes from "../../Routes";
 
 import { Nav } from "./styles";
