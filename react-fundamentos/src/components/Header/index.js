@@ -1,22 +1,21 @@
 import React from "react";
-
-import { ThemeContext } from "../../contexts/ThemeContext";
+import { useHistory } from "react-router-dom";
 
 import { Container } from "./styles";
 
-export default class Header extends React.Component {
-  render() {
-    return (
-      <ThemeContext.Consumer>
-        {(value) => (
-          <Container>
-            <h1>JStack's Blog!</h1>
-            <button type="button" onClick={value.handleToggleTheme}>
-              {value.theme == "dark" ? "🌞" : "🌑"}
-            </button>
-          </Container>
-        )}
-      </ThemeContext.Consumer>
-    );
+export default function Header() {
+  const history = useHistory();
+
+  function handleNavigate() {
+    history.push("/");
   }
+  return (
+    <Container>
+      <h1>JStack's Blog!</h1>
+      <button type="button">🌞</button>
+      <button onClick={handleNavigate} style={{ color: "#fff" }}>
+        Voltar para a Home
+      </button>
+    </Container>
+  );
 }

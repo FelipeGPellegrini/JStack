@@ -1,14 +1,14 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.footer`
-  background: ${({theme}) => theme.footerBackgroundColor};
+  background: ${({ theme }) => theme.footerBackgroundColor};
   height: 70px;
   display: flex;
   align-items: center;
   padding: 0 24px;
   border-radius: 10px;
   justify-content: space-between;
-  margin-top: 24px;
+  margin-top: 80px;
 
   button {
     cursor: pointer;

@@ -7,21 +7,19 @@ export default class Post extends React.Component {
     const { search } = this.props.location;
     this.queryParams = new URLSearchParams(search);
   }
+
+  handleNavigate = () => {
+    this.props.history.push("/posts");
+  };
   render() {
     console.log(this.queryParams.get("nome"));
-    return <h1>Post page</h1>;
+    return (
+      <>
+        <button onClick={this.handleNavigate}>
+          Voltar para a lista de posts
+        </button>
+        <h1>Post page</h1>
+      </>
+    );
   }
 }
-
-/*
-export default function Home() {
-  const params = useParams();
-  const { search } = useLocation();
-  const queryParams = new URLSearchParams(search);
-
-  console.log(params);
-  console.log(queryParams.get("nome"));
-
-  return <h1>Post</h1>;
-}
-*/

@@ -8,8 +8,6 @@ import Routes from "../../Routes";
 import { Nav } from "./styles";
 
 export default function Layout() {
-  const history = useHistory();
-  console.log(history);
   return (
     <BrowserRouter>
       <Header />
@@ -19,7 +17,7 @@ export default function Layout() {
         <Link to="/posts/123654864">Post</Link>
       </Nav>
       <Routes />
-      <Footer />
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 }
